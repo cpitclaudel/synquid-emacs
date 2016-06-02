@@ -119,8 +119,9 @@
   (setq-local comment-start-skip "--+\\s-*")
   (setq-local font-lock-defaults '(synquid--font-lock-keywords))
   (font-lock-mode)
-  (setq-local prettify-symbols-alist synquid-prettify-symbols-alist)
-  (prettify-symbols-mode)
+  (when (fboundp 'prettify-symbols-mode)
+    (setq-local prettify-symbols-alist synquid-prettify-symbols-alist)
+    (prettify-symbols-mode))
   (flycheck-mode))
 
 (provide 'synquid)
