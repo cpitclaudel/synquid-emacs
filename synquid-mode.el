@@ -33,6 +33,11 @@
 (require 'company nil t)
 (require 'company-math nil t)
 
+(defvar synquid-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c C-c") #'synquid-synthesize)
+    map))
+
 (defvar synquid-mode-syntax-table
   (let ((table (make-syntax-table)))
     (dolist (char (string-to-list "_?0123456789"))
@@ -85,9 +90,11 @@
      1 font-lock-function-name-face))
   "Font-lock specs for Synquid mode.")
 
+(defvar synquid--args '("--resolve"))
+
 (flycheck-define-checker synquid
   "Flycheck checker for Synquid files."
-  :command ("synquid" "--resolve" source)
+  :command ("synquid" (eval synquid--args) source)
   :error-patterns
   ((error bol (file-name) ":" line (?  ":" column) ": "
           (message (or "Parse Error"
@@ -97,6 +104,12 @@
   :modes (synquid-mode))
 
 (add-to-list 'flycheck-checkers 'synquid)
+
+(defun synquid-synthesize ()
+  "Feed current file to Synquid and show synthesis results."
+  (interactive)
+  (let ((synquid-args nil))
+    (flycheck-compile 'synquid)))
 
 ;;;###autoload
 (define-derived-mode synquid-mode prog-mode "Synquid"
