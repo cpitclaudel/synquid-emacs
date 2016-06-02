@@ -39,7 +39,7 @@ sudo apt-get -qq update >> $LOGFILE 2>&1
 echo '* apt-get install (VBox extensions)'
 sudo apt-get -qq install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11 >> $LOGFILE 2>&1
 echo '* apt-get install (Dependencies)'
-sudo apt-get -qq install git emacs-snapshot mercurial ghc-7.10.3 >> $LOGFILE 2>&1
+sudo apt-get -qq install git unzip emacs-snapshot mercurial ghc-7.10.3 cabal-install-1.22 >> $LOGFILE 2>&1
 
 echo 'export TERM=xterm-256color' >> ~/.profile
 
@@ -63,6 +63,7 @@ mv -T ~/MSR/z3-4.4.0-x64-ubuntu-14.04 ~/MSR/z3 >> $LOGFILE
 
 echo '* setup (Synquid)'
 cd ~/synquid
+cabal update >> $LOGFILE
 cabal install >> $LOGFILE
 
 echo ""
@@ -88,7 +89,7 @@ emacs --batch --load ~/.emacs.d/init.el \
       >> $LOGFILE 2>&1
 
 echo '* PATH adjustments'
-echo 'export PATH="$PATH:$HOME/MSR/z3/bin/:$HOME/synquid/"' >> ~/.profile
+echo 'export PATH="$PATH:/opt/cabal/1.22/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin/:$HOME/MSR/z3/bin/:$HOME/synquid/"' >> ~/.profile
 
 echo ""
 echo '*********************************'
