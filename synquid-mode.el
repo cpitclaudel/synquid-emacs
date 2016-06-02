@@ -33,8 +33,6 @@
 ;;; Code:
 
 (require 'flycheck)
-(require 'company nil t)
-(require 'company-math nil t)
 
 (defvar synquid-mode-map
   (let ((map (make-sparse-keymap)))
