@@ -4,7 +4,7 @@
 ;; Author: Clément Pit-Claudel <clement.pitclaudel@live.com>
 ;; URL: https://github.com/cpitclaudel/synquid-mode
 ;; Keywords: languages
-;; Package-Requires: ((company-math "1.1") (company "0.8.12") (flycheck "27"))
+;; Package-Requires: ((flycheck "27"))
 ;; Version: 0.1
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -120,13 +120,7 @@
   (font-lock-mode)
   (setq-local prettify-symbols-alist synquid-prettify-symbols-alist)
   (prettify-symbols-mode)
-  (flycheck-mode)
-  (when (and (featurep 'company) (featurep 'company-math))
-    (setq-local company-backends
-                (cons 'company-math-symbols-unicode
-                      (remove 'company-math-symbols-unicode
-                              company-backends)))
-    (company-mode)))
+  (flycheck-mode))
 
 (provide 'synquid)
 ;;; synquid-mode.el ends here
