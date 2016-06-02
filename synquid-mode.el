@@ -120,11 +120,13 @@
   (font-lock-mode)
   (setq-local prettify-symbols-alist synquid-prettify-symbols-alist)
   (prettify-symbols-mode)
+  (flycheck-mode)
   (when (and (featurep 'company) (featurep 'company-math))
     (setq-local company-backends
                 (cons 'company-math-symbols-unicode
                       (remove 'company-math-symbols-unicode
-                              company-backends)))))
+                              company-backends)))
+    (company-mode)))
 
 (provide 'synquid)
 ;;; synquid-mode.el ends here
