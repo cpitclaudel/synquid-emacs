@@ -56,7 +56,7 @@
 (defconst synquid--fl-types '("Bool" "Int" "Set"))
 (defconst synquid--fl-builtins '("False" "True" "_v"))
 (defconst synquid--fl-keywords '("data" "else" "error" "if" "in" "inline"  "let" "match" "measure"
-                          "predicate" "qualifier"  "termination" "then"  "type" "with" "where" ))
+                          "predicate" "qualifier" "termination" "then"  "type" "with" "where"))
 
 (defconst synquid--fl-symbol-re "\\(\\(?:\\sw\\|\\s_\\)+\\)")
 (defconst synquid--fl-def-headers '("measure" "termination measure" "predicate"))
@@ -87,7 +87,7 @@
 
 (flycheck-define-checker synquid
   "Flycheck checker for Synquid files."
-  :command ("synquid"  source)
+  :command ("synquid" "--resolve" source)
   :error-patterns
   ((error bol (file-name) ":" line (?  ":" column) ": "
           (message (or "Parse Error"
