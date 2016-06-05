@@ -4,7 +4,7 @@
 ;; Author: Clément Pit-Claudel <clement.pitclaudel@live.com>
 ;; URL: https://github.com/cpitclaudel/synquid-mode
 ;; Keywords: languages
-;; Package-Requires: ((flycheck "27"))
+;; Package-Requires: ((flycheck "27") (emacs "24.3"))
 ;; Version: 0.1
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -118,7 +118,6 @@
   (setq-local comment-start "-- ")
   (setq-local comment-start-skip "--+\\s-*")
   (setq-local font-lock-defaults '(synquid--font-lock-keywords))
-  (font-lock-mode)
   (when (fboundp 'prettify-symbols-mode)
     (setq-local prettify-symbols-alist synquid-prettify-symbols-alist)
     (prettify-symbols-mode))
