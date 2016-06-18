@@ -24,9 +24,6 @@
 
 ;; Synquid programming in Emacs!
 ;;
-;; Use the following to automatically open synquid files in Synquid mode:
-;;   (add-to-list 'auto-mode-alist '("\\.sq\\'" . synquid-mode))
-;;
 ;; For information about Synquid, visit
 ;; https://bitbucket.org/nadiapolikarpova/synquid
 
@@ -122,6 +119,9 @@
     (setq-local prettify-symbols-alist synquid-prettify-symbols-alist)
     (prettify-symbols-mode))
   (flycheck-mode))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.sq\\'" . synquid-mode))
 
 (provide 'synquid)
 ;;; synquid.el ends here
