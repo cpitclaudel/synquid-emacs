@@ -1,4 +1,4 @@
-;;; synquid-mode.el --- Major mode for editing Synquid files
+;;; synquid.el --- Major mode for editing Synquid files
 
 ;; Copyright (C) 2016  Clément Pit--Claudel
 ;; Author: Clément Pit-Claudel <clement.pitclaudel@live.com>
@@ -46,9 +46,9 @@
     (modify-syntax-entry ?\" "\"" table)
     (modify-syntax-entry ?\( "()" table)
     (modify-syntax-entry ?\) ")(" table)
-    (modify-syntax-entry ?\{  "(}1nb" table)
-    (modify-syntax-entry ?\}  "){4nb" table)
-    (modify-syntax-entry ?-  ". 123" table)
+    (modify-syntax-entry ?\{ "(}1nb" table)
+    (modify-syntax-entry ?\} "){4nb" table)
+    (modify-syntax-entry ?- ". 123" table)
     (modify-syntax-entry ?\n ">" table)
     table)
   "Syntax table for `synquid-mode'.")
@@ -124,4 +124,4 @@
   (flycheck-mode))
 
 (provide 'synquid)
-;;; synquid-mode.el ends here
+;;; synquid.el ends here
