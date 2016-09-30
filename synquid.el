@@ -106,7 +106,7 @@
 (defun synquid-synthesize ()
   "Feed current file to Synquid and show synthesis results."
   (interactive)
-  (let ((synquid-args nil))
+  (let ((synquid--args nil))
     (flycheck-compile 'synquid)))
 
 ;;;###autoload
